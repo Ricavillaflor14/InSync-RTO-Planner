@@ -1,0 +1,77 @@
+# InSync Internal Constitution
+
+## Project Overview
+**Project Name:** InSync
+
+## Design & Branding Guidelines
+
+### Color Palette
+- **Thomson Reuters Orange:** #FA6400
+- **White:** #FFFFFF  
+- **Dark Gray:** #404040
+
+*Note: Always use these official Thomson Reuters colors for consistency across the application.*
+
+### Logo Integration
+- Use the official Thomson Reuters logo from: https://share.google/YXTobWekgPC5m7RBk
+- Align Thomson Reuters logo with custom-designed InSync logo in the header
+- Maintain proper branding hierarchy and visual balance
+
+## Business Logic Requirements
+
+### Seat Map Configuration
+- **Fixed Grid:** Office contains 34 seats with naming convention: 1820-10F-067 through 1820-10F-100
+- **Extensibility:** Managers must have administrative capability to add additional seat names as needed
+- **Management Access:** Provide interface for seat configuration management
+
+### RTO (Return to Office) Calculation
+- **Target Percentage:** 40%
+- **Formula:** Required Days = (Total Mon-Fri) - (Holidays + Site-WFH + User Leaves + WFA) * 0.4
+- **Rounding:** Always round up the final result
+- **Calculation Notes:** 
+  - Total Mon-Fri = Total weekdays in calculation period
+  - Holidays = Company holidays
+  - Site-WFH = Site-designated work from home days
+  - User Leaves = Individual employee leave days
+  - WFA = Work from anywhere days
+
+## Security & Access Control
+
+### Email Domain Restriction
+- **Requirement:** Restrict ALL access and registration to @thomsonreuters.com email addresses ONLY
+- **Implementation:** Validate email domain during registration and authentication
+- **No Exceptions:** External email domains must be blocked
+
+## Technical Stack Requirements
+
+### Core Technologies
+- **Frontend Framework:** TypeScript
+- **Styling:** Tailwind CSS
+- **Build Tool:** Vite
+- **Database:** Supabase
+
+### Environment Variables
+- **Supabase Configuration:** ALWAYS use environment variables for Supabase keys
+- **Security:** Never hardcode API keys or sensitive configuration in source code
+- **Required Variables:**
+  - VITE_SUPABASE_URL
+  - VITE_SUPABASE_ANON_KEY
+  - (Additional Supabase environment variables as needed)
+
+## Development Standards
+
+### Code Quality
+- Use TypeScript strict mode
+- Implement proper error handling
+- Follow consistent naming conventions
+- Maintain clean, readable code structure
+
+### UI/UX Standards
+- Maintain Thomson Reuters brand consistency
+- Ensure responsive design across devices
+- Implement accessible design principles
+- Use consistent spacing and typography
+
+---
+
+*This constitution serves as the foundational guidelines for the InSync project development. All team members and contributors must adhere to these specifications.*

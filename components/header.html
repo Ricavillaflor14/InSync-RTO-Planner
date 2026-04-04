@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InSync - Co-Branded Header</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+            border-bottom: 3px solid #FA6400;
+            padding: 16px 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .insync-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .thomson-reuters-logo {
+            display: flex;
+            align-items: center;
+            opacity: 0.9;
+        }
+
+        .thomson-reuters-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .brand-divider {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #FA6400, transparent);
+            opacity: 0.6;
+        }
+
+        .nav-section {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-item {
+            color: #404040;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(250, 100, 0, 0.1);
+            color: #FA6400;
+        }
+
+        .nav-item.active {
+            background-color: #FA6400;
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .brand-section {
+                gap: 20px;
+            }
+
+            .nav-section {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <!-- Co-Branded Logo Section -->
+            <div class="brand-section">
+                <!-- InSync Logo -->
+                <div class="insync-logo">
+                    <svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FA6400;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FF7A1A;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Sync Symbol - Two interlocking circles -->
+                        <g>
+                            <circle cx="15" cy="20" r="8" fill="none" stroke="#FA6400" stroke-width="2" opacity="0.7"/>
+                            <circle cx="25" cy="20" r="8" fill="none" stroke="#FA6400" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="3" fill="#FA6400"/>
+                        </g>
+                        
+                        <!-- InSync Text -->
+                        <text x="40" y="15" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#404040">In</text>
+                        <text x="55" y="15" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#FA6400">Sync</text>
+                        
+                        <!-- Tagline -->
+                        <text x="40" y="28" font-family="Arial, sans-serif" font-size="8" fill="#404040" opacity="0.8">RTO PLANNER</text>
+                    </svg>
+                </div>
+
+                <!-- Brand Divider -->
+                <div class="brand-divider"></div>
+
+                <!-- Thomson Reuters Logo -->
+                <div class="thomson-reuters-logo">
+                    <img src="../assets/logos/thomson-reuters-logo.png" alt="Thomson Reuters" />
+                </div>
+            </div>
+
+            <!-- Navigation Section -->
+            <nav class="nav-section">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Seat Map</a>
+                <a href="#" class="nav-item">RTO Calculator</a>
+                <a href="#" class="nav-item">Reports</a>
+                <a href="#" class="nav-item">Settings</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Demo Content -->
+    <div style="padding: 40px 24px; max-width: 1200px; margin: 0 auto; font-family: Arial, sans-serif;">
+        <h1 style="color: #404040; margin-bottom: 16px;">InSync Co-Branded Header Demo</h1>
+        <p style="color: #666; line-height: 1.6;">This header showcases the professional co-branding of InSync and Thomson Reuters, maintaining brand hierarchy and visual balance as specified in the Internal Constitution.</p>
+        
+        <div style="margin-top: 32px; padding: 24px; background: #F8F9FA; border-radius: 8px; border-left: 4px solid #FA6400;">
+            <h3 style="color: #FA6400; margin-bottom: 12px;">Brand Guidelines Applied:</h3>
+            <ul style="color: #404040; line-height: 1.8;">
+                <li>Thomson Reuters Orange (#FA6400) as primary accent color</li>
+                <li>InSync logo positioned alongside TR logo with proper spacing</li>
+                <li>Professional gradient background with brand-consistent styling</li>
+                <li>Responsive design for mobile and desktop</li>
+                <li>Clear visual hierarchy and navigation structure</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
