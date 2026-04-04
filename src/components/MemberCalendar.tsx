@@ -24,7 +24,7 @@ const MemberCalendar = () => {
   const [calendarEntries, setCalendarEntries] = useState<CalendarEntry[]>([])
   const [holidays, setHolidays] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedDates, setSelectedDates] = useState<Date[]>([])
+  const [, ] = useState<Date[]>([])
   const [bulkModal, setBulkModal] = useState<BulkEntryModal>({
     isOpen: false,
     startDate: '',
@@ -106,7 +106,6 @@ const MemberCalendar = () => {
     const year = currentDate.getFullYear()
     const month = currentDate.getMonth()
     const firstDay = new Date(year, month, 1)
-    const lastDay = new Date(year, month + 1, 0)
     const startDate = new Date(firstDay)
     startDate.setDate(startDate.getDate() - firstDay.getDay()) // Start from Sunday
 

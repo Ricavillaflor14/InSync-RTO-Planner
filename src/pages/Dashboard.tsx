@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react'
-import { getCurrentUser, getUserProfile, UserProfile, supabase } from '../lib/supabaseClient'
-import { formatDate, calculateRTO, getMonthWeekdays } from '../lib/rtoCalculations'
-import { DashboardSkeleton, StatCardSkeleton, LoadingSpinner } from '../components/LoadingSkeletons'
+import { getCurrentUser, getUserProfile, UserProfile } from '../lib/supabaseClient'
 import BuddyFinder from '../components/BuddyFinder'
 import RTOCheckIn from '../components/RTOCheckIn'
 import BulkEntryModal from '../components/BulkEntryModal'
-import { useToast } from '../contexts/ToastContext'
 
 const Dashboard = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null)

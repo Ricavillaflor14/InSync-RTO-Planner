@@ -23,7 +23,7 @@ const BuddyFinder = ({ selectedDate = formatDate(new Date()), isCompact = false 
   const [buddies, setBuddies] = useState<BuddyWithStatus[]>([])
   const [filteredBuddies, setFilteredBuddies] = useState<BuddyWithStatus[]>([])
   const [loading, setLoading] = useState(true)
-  const [isSearchFocused, setIsSearchFocused] = useState(false)
+  const [, setIsSearchFocused] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const { showToast } = useToast()
   const searchRef = useRef<HTMLDivElement>(null)
