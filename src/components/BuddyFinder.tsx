@@ -23,7 +23,7 @@ const BuddyFinder = ({ selectedDate = formatDate(new Date()), isCompact = false 
   const [buddies, setBuddies] = useState<BuddyWithStatus[]>([])
   const [filteredBuddies, setFilteredBuddies] = useState<BuddyWithStatus[]>([])
   const [loading, setLoading] = useState(true)
-  const [, setIsSearchFocused] = useState(false)
+  const [, setSearchFocused] = useState(false)
   const [showDropdown, setShowDropdown] = useState(false)
   const { showToast } = useToast()
   const searchRef = useRef<HTMLDivElement>(null)
@@ -52,7 +52,7 @@ const BuddyFinder = ({ selectedDate = formatDate(new Date()), isCompact = false 
     const handleClickOutside = (event: MouseEvent) => {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setShowDropdown(false)
-        setIsSearchFocused(false)
+        setSearchFocused(false)
       }
     }
 
@@ -179,7 +179,7 @@ const BuddyFinder = ({ selectedDate = formatDate(new Date()), isCompact = false 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => {
-              setIsSearchFocused(true)
+              setSearchFocused(true)
               setShowDropdown(true)
             }}
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-tr-orange focus:border-tr-orange outline-none"

@@ -24,7 +24,6 @@ const MemberCalendar = () => {
   const [calendarEntries, setCalendarEntries] = useState<CalendarEntry[]>([])
   const [holidays, setHolidays] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [, ] = useState<Date[]>([])
   const [bulkModal, setBulkModal] = useState<BulkEntryModal>({
     isOpen: false,
     startDate: '',
