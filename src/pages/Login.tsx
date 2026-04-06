@@ -38,7 +38,12 @@ const Login = () => {
         if (error) throw error
       }
     } catch (error: any) {
-      setError(error.message)
+      console.error('Authentication error:', error)
+      if (error.message.includes('Invalid API key') || error.message.includes('Failed to fetch')) {
+        setError('Application configuration error. Please ensure Supabase credentials are properly set in GitHub Secrets.')
+      } else {
+        setError(error.message || 'An error occurred during authentication')
+      }
     } finally {
       setLoading(false)
     }
@@ -91,11 +96,11 @@ const Login = () => {
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-            {/* Thomson Reuters Logo */}
+            {/* InSync Logo */}
             <img 
-              src="/assets/logos/thomson-reuters-logo.png" 
-              alt="Thomson Reuters" 
-              className="mx-auto h-12 mb-6"
+              src="/InSync-RTO-Planner/assets/logos/insync-logo.svg" 
+              alt="InSync RTO Planner" 
+              className="mx-auto h-16 mb-6"
             />
             <h2 className="text-3xl font-bold text-tr-gray">
               {isSignUp ? 'Create Account' : 'Sign In'}
@@ -156,7 +161,7 @@ const Login = () => {
               {loading ? 'Processing...' : (isSignUp ? 'Create Account' : 'Sign In')}
             </button>
 
-            <div className="text-center">
+            <div className="text-center space-y-3">
               <button
                 type="button"
                 onClick={() => {
@@ -168,6 +173,18 @@ const Login = () => {
               >
                 {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
               </button>
+              
+              {(!import.meta.env.VITE_SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL.includes('placeholder')) && (
+                <div className="pt-3 border-t border-gray-200">
+                  <button
+                    type="button"
+                    onClick={() => window.location.href = '/InSync-RTO-Planner/dashboard'}
+                    className="text-xs text-gray-500 hover:text-gray-700 underline"
+                  >
+                    Demo Mode (Testing without Supabase)
+                  </button>
+                </div>
+              )}
             </div>
           </form>
 
