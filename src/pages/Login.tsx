@@ -197,13 +197,16 @@ const Login = () => {
               </p>
               <button
                 type="button"
-                onClick={() => window.location.href = '/InSync-RTO-Planner/dashboard'}
-                className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-md text-sm font-medium transition-colors"
+                onClick={() => {
+                  console.log('Demo mode clicked - navigating to dashboard')
+                  window.location.href = '/InSync-RTO-Planner/dashboard'
+                }}
+                className="w-full bg-tr-orange hover:bg-orange-600 text-white py-3 px-4 rounded-md text-sm font-medium transition-colors"
               >
-                🚀 Demo Mode - Access Dashboard
+                🚀 DEMO MODE - Access Dashboard
               </button>
               <p className="text-xs text-gray-500 mt-2">
-                (Bypasses authentication for testing)
+                (Bypasses authentication for testing - Click this to access the app)
               </p>
             </div>
           </form>
