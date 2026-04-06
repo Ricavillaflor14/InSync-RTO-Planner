@@ -34,6 +34,7 @@ function App() {
               <Header />
               <Routes>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/calendar" element={<MemberCalendar />} />
                 <Route path="/seat-map" element={<SeatMap />} />
                 <Route path="/rto-calculator" element={<MemberCalendar />} />
