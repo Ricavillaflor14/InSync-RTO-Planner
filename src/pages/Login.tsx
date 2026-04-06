@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { supabase, validateEmailDomain } from '../lib/supabaseClient'
 
-const Login = () => {
+const Login = ({ onDemoMode }: { onDemoMode: () => void }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
@@ -197,10 +197,7 @@ const Login = () => {
               </p>
               <button
                 type="button"
-                onClick={() => {
-                  console.log('Demo mode clicked - navigating to dashboard')
-                  window.location.href = '/InSync-RTO-Planner/#/dashboard'
-                }}
+                onClick={onDemoMode}
                 className="w-full bg-tr-orange hover:bg-orange-600 text-white py-3 px-4 rounded-md text-sm font-medium transition-colors"
               >
                 🚀 DEMO MODE - Access Dashboard

@@ -11,6 +11,7 @@ import { ToastProvider } from './contexts/ToastContext'
 
 function App() {
   const [session, setSession] = useState<Session | null>(null)
+  const [demoMode, setDemoMode] = useState(false)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -29,7 +30,7 @@ function App() {
   return (
     <ToastProvider>
       <div className="min-h-screen bg-white">
-          {session ? (
+          {session || demoMode ? (
             <>
               <Header />
               <Routes>
@@ -43,7 +44,7 @@ function App() {
               </Routes>
             </>
           ) : (
-            <Login />
+            <Login onDemoMode={() => setDemoMode(true)} />
           )}
       </div>
     </ToastProvider>
