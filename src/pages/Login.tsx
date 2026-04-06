@@ -199,7 +199,7 @@ const Login = () => {
                 type="button"
                 onClick={() => {
                   console.log('Demo mode clicked - navigating to dashboard')
-                  window.location.href = '/InSync-RTO-Planner/dashboard'
+                  window.location.href = '/InSync-RTO-Planner/#/dashboard'
                 }}
                 className="w-full bg-tr-orange hover:bg-orange-600 text-white py-3 px-4 rounded-md text-sm font-medium transition-colors"
               >
