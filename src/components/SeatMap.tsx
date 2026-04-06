@@ -84,6 +84,22 @@ const SeatMap = () => {
           setUserProfile(profile)
           await fetchSeats()
           await fetchBookings()
+        } else {
+          // Demo mode - load mock seats
+          setSeats([
+            { id: '1', seat_name: 'A-101', floor: '10F', section: 'Section A', is_available: true, created_at: '', updated_at: '' },
+            { id: '2', seat_name: 'A-102', floor: '10F', section: 'Section A', is_available: true, created_at: '', updated_at: '' },
+            { id: '3', seat_name: 'A-103', floor: '10F', section: 'Section A', is_available: true, created_at: '', updated_at: '' },
+            { id: '4', seat_name: 'A-104', floor: '10F', section: 'Section A', is_available: false, created_at: '', updated_at: '' },
+            { id: '5', seat_name: 'B-101', floor: '10F', section: 'Section B', is_available: true, created_at: '', updated_at: '' },
+            { id: '6', seat_name: 'B-102', floor: '10F', section: 'Section B', is_available: true, created_at: '', updated_at: '' },
+            { id: '7', seat_name: 'B-103', floor: '10F', section: 'Section B', is_available: true, created_at: '', updated_at: '' },
+            { id: '8', seat_name: 'B-104', floor: '10F', section: 'Section B', is_available: false, created_at: '', updated_at: '' },
+            { id: '9', seat_name: 'C-101', floor: '11F', section: 'Section C', is_available: true, created_at: '', updated_at: '' },
+            { id: '10', seat_name: 'C-102', floor: '11F', section: 'Section C', is_available: true, created_at: '', updated_at: '' },
+            { id: '11', seat_name: 'C-103', floor: '11F', section: 'Section C', is_available: true, created_at: '', updated_at: '' },
+            { id: '12', seat_name: 'C-104', floor: '11F', section: 'Section C', is_available: true, created_at: '', updated_at: '' },
+          ])
         }
       } catch (error) {
         console.error('Error initializing seat map:', error)
@@ -202,7 +218,14 @@ const SeatMap = () => {
   }
 
   const handleBookSeat = async () => {
-    if (!userProfile || !bookingModal.seat) return
+    if (!bookingModal.seat) return
+
+    // Demo mode - just simulate booking
+    if (!userProfile) {
+      alert(`✅ Demo: Seat ${bookingModal.seat.seat_name} booked successfully!`)
+      setBookingModal({ ...bookingModal, isOpen: false })
+      return
+    }
 
     try {
       const startDate = bookingModal.startDate

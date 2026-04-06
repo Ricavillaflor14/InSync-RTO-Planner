@@ -40,13 +40,6 @@ const Header = () => {
               </svg>
             </div>
 
-            {/* Brand Divider */}
-            <div className="w-0.5 h-10 bg-gradient-to-b from-transparent via-tr-orange to-transparent opacity-60"></div>
-
-            {/* Thomson Reuters Logo */}
-            <div className="flex items-center">
-              <img src="/assets/logos/thomson-reuters-logo.png" alt="Thomson Reuters" className="h-8 opacity-90" />
-            </div>
           </div>
 
           {/* Navigation and User Menu */}
