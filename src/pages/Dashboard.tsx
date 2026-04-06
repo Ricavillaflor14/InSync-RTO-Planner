@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { getCurrentUser, getUserProfile, UserProfile } from '../lib/supabaseClient'
-import BuddyFinder from '../components/BuddyFinder'
 import RTOCheckIn from '../components/RTOCheckIn'
 import BulkEntryModal from '../components/BulkEntryModal'
 
@@ -119,8 +118,6 @@ const Dashboard = () => {
           {/* RTO Check-In */}
           <RTOCheckIn />
           
-          {/* Buddy Finder */}
-          <BuddyFinder isCompact />
         </div>
 
         {/* Role-based Content */}

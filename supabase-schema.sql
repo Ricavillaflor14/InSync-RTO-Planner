@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     last_name VARCHAR(100),
     department VARCHAR(100),
     employee_id VARCHAR(50),
+    team_name VARCHAR(100),
+    manager_id UUID REFERENCES public.profiles(id),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
@@ -40,6 +42,8 @@ CREATE TABLE IF NOT EXISTS public.seat_bookings (
     start_time TIME DEFAULT '09:00',
     end_time TIME DEFAULT '17:00',
     is_cancelled BOOLEAN DEFAULT false,
+    is_blocked BOOLEAN DEFAULT false,
+    blocked_by UUID REFERENCES public.profiles(id),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     
@@ -74,7 +78,7 @@ CREATE TABLE IF NOT EXISTS public.calendar_entries (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
     entry_date DATE NOT NULL,
-    entry_type VARCHAR(20) NOT NULL CHECK (entry_type IN ('OFFICE', 'WFH', 'SL', 'WFA', 'HOLIDAY')),
+    entry_type VARCHAR(20) NOT NULL CHECK (entry_type IN ('OFFICE', 'WFH', 'SL', 'WFA', 'HOLIDAY', 'WFH_SITE_ANNOUNCED', 'LEAVE', 'DIL', 'VL')),
     notes TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
@@ -185,13 +189,13 @@ CREATE POLICY "Managers and Admins can view all bookings" ON public.seat_booking
 CREATE POLICY "Authenticated users can view holidays" ON public.holidays
     FOR SELECT TO authenticated USING (true);
 
--- Only Admins can modify holidays
-CREATE POLICY "Admins can modify holidays" ON public.holidays
+-- Managers and Admins can modify holidays
+CREATE POLICY "Managers and Admins can modify holidays" ON public.holidays
     FOR ALL USING (
         EXISTS (
             SELECT 1 FROM public.profiles 
             WHERE id = auth.uid() 
-            AND role = 'Admin'
+            AND role IN ('Manager', 'Admin')
         )
     );
 
